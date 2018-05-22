@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录和注册</title>
+
+  <!-- 登录页面 -->
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="loginHeader">
+    <div class="wrapper">
+      <div class="left">
+        <div class="deep"><img src="img/bookstore.png" alt="沉潜书屋" height=22></div>
+  
+        <div class="label">注册账号</div>
+      </div>
+      <div class="right">
+        <div class="label">我已注册，现在就</div>
+        <button class="login"><a href="#">登录</a></button>
+        
+      </div>
+    </div>
+  </header>
+  <main class="registerContent">
+    <form action="" method="POST">
+      <p class="">
+        <label for="userName">用户名</label>
+        <input type="text" id="userName" class="blank">
+      </p>
+      <p class="">
+        <label for="phone">手机号</label>
+        <input type="text" id="phone" class="blank">
+      </p>
+      <p class="password">
+        <label for="password">密码</label>
+        <input type="text" id="password" class="blank">
+      </p>
+      <p class="gender">
+        <label for="">性别</label>
+        <label for="genderChoice1">男
+            <input type="radio" id="genderChoice1" name="gender" value="male" checked>
+        </label>
+        <label for="genderChoice2">女
+            <input type="radio" id="genderChoice2" name="gender" value="female">
+        </label>
+      </p>
+      <p class="birthday">
+        <label for="birthday">生日</label>
+        <input type="text" id="birthday" class="blank">
+      </p>
+      <p class="registerSubmit">
+        <label for=""></label>
+        <button class="register">注册</button>
+      </p> 
+    </form>
+  </main>
+</body>
+</html>

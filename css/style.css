@@ -1,0 +1,403 @@
+*{ margin: 0; padding: 0; }
+a{ text-decoration: none; color: inherit;}
+
+button{ color: inherit; }
+ul>li{ list-style: none; }
+input{ }
+input:focus, button:focus{ outline: none; }
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* index.html  start */
+header.indexHeader{
+  position: relative;
+}
+.head{
+  background: #1a1a1a;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  -webkit-font-smoothing: initial;
+  font-family: sans-serif;
+  line-height: 1.5;
+  color: #fff;
+}
+.head > .container{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 37px;
+  padding-right: 37px;
+  max-width: 1500px;
+  min-width: 812px;
+  margin: 0 auto;
+}
+.head .deep{
+  background-color: #79B530;
+  padding: 10px 15px 8px;
+}
+.head .search{
+  float: left;
+  margin: 5px 35px 5px 0;
+}
+.search .search-input{
+  float: left;
+  width: 385px;
+  border: 1px solid #79B530;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  font-size: 16px;
+  line-height: 30px;
+  padding-left: 15px;
+  background-color: #fff;
+}
+.search .search-submit{
+  float: left;
+  width: 89px;
+  background-color: #79B530;
+  border: 1px solid #79B530;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-size: 16px;
+  line-height: 30px;
+  transition: all .5s;
+}
+.search .search-submit:hover{
+  background-color: rgb(106, 156, 44);
+}
+.head .loginAndRegister{
+  float: left;
+  margin: 5px 0;
+  line-height: 30px;
+}
+.loginAndRegister .manager{
+  margin-left: 25px;
+  font-size: 13px;
+}
+header .logo-bg{
+  background: url(../img/placeimg_1000_110_tech.jpg);
+  background-size: cover;
+  height: 340px;
+}
+.logo-bg .mask{
+  background: rgba(0, 0, 0, .65);
+  position: relative;
+  height: 340px;
+}
+header .logo{
+  font-size: 50px;
+  text-align: center;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+}
+header nav{
+  border-top: 3px double #f0f0f0;
+  border-bottom: 3px double #f0f0f0;
+}
+nav > .navigation{
+  display: flex;
+  justify-content: center;
+}
+nav > .navigation > .menu{
+  display: flex;
+}
+nav > .navigation > .menu > li{
+  padding: 14px 25px;
+  position: relative;
+}
+nav > .navigation .menu .submenu{
+  display: none;
+  position: absolute;
+  top: calc(100% - 5px);
+  right: 25px;
+  white-space: nowrap;
+  background-color: #fff;
+  color: #3d4451;
+  padding: 5px 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  z-index: 2;
+}
+nav > .navigation .menu li.active .submenu{
+  display: block;
+}
+.navigation .menu .submenu li{
+  margin: 5px 0;
+}
+.topSlot{
+  margin-top: 44px;
+}
+.topSlot .swiper-container {
+  max-width: 900px;
+  min-height: 200px;
+}
+.topSlot ul{
+  box-shadow: inset 0px 0px 10px 1px rgba(240,240,240,1);
+  text-align: center;
+  margin-top: 20px;
+  padding: 0 82px 46px;
+}
+.topSlot .title{
+  position: relative;
+  top: -0.4em;
+  padding: 0 28px;
+  background-color: #fff;
+}
+.title{
+  display: inline-block;
+  font-size: 32px;
+  font-family: 'Zeyada', '华文行楷';
+  color: #5DA5B9;
+}
+.topSlot ul>li{
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+.topSlot ul>li>a:hover{
+  color: #5DA5B9;
+}
+.onSale,
+.recommend{
+  border: 1px solid rgb(240,240,240);
+  max-width: 900px;
+  height: 500px;
+  margin: 104px auto 0; 
+  background: url(../img/placeimg_640_480_tech.jpg) center no-repeat;
+  background-size: cover;
+  color: black;
+}
+.onSale .mask,
+.recommend .mask{
+  background: rgba(255, 255, 255, .8);
+  height: 100%;
+}
+.onSale .content,
+.recommend .content{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 30px;
+}
+.onSale .content .title,
+.recommend .content .title{
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  color: #79B530;
+}
+.onSale .bookName,
+.recommend .bookName{
+  font-size: 24px;
+  font-weight: bold;
+}
+.onSale .time,
+.recommend .time{
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 8px auto 30px;
+}
+.onSale .intro,
+.recommend .intro{
+  text-indent: 2em;
+  line-height: 25px;
+}
+.onSale .buy,
+.recommend .buy{
+  position: absolute;
+  top: 12px;
+  right: 0;
+  font-family: 'Bradley Hand ITC 常规';
+  line-height: 23px;
+  height: 23px;
+  font-size: 18px;
+}
+.onSale .like,
+.recommend .like{
+  position: absolute;
+  top: 40px;
+  right: 0;
+  line-height: 23px;
+  height: 23px;
+  font-size: 18px;
+}
+.onSale .content .number,
+.recommend .content .number{
+  margin: 0 20px 0 6px;
+}
+.onSale .content .more,
+.recommend .content .more{
+  position: absolute;
+  bottom: -28px;
+  padding: 15px 34px;
+  background-color: rgb(121,195,215);
+  color: white;
+  transition: all .5s;
+}
+.onSale .content .more:hover,
+.recommend .content .more:hover{
+  background-color: #5DA5B9;
+}
+.siteFooter{
+  background-image: url(../img/footer-top-overlay.png),url(../img/footer-bottom-right.png),url(../img/footer-bottom-bg.jpg);
+  background-repeat: repeat-x,no-repeat,repeat-x;    
+  background-position: left top,right bottom,left top;
+  background-size: contain,contain,cover;
+  border-top: 10px solid transparent;
+  padding-bottom: 30px;
+  margin-top: 104px;
+}
+.siteFooter .container{
+  max-width: 1500px;
+  margin: 39px auto 0;
+  display: flex;
+  justify-content: center;
+  color: #555;
+}
+.siteFooter .friendLinks{
+  margin-right: 10%;
+}
+.siteFooter .friendLinks .title{
+  font-size: 23px;
+}
+.siteFooter .friendLinks ul>li{
+  margin: 9px 0;
+  color: #5DA5B9
+}
+.siteFooter .bookstoreIntro{
+  width: 30%;
+  margin-right: 10%;
+}
+.siteFooter .bookstoreIntro p{
+  text-indent: 2em;
+  line-height: 1.5em;
+  margin-bottom: 9px;
+}
+.siteFooter .bookstoreInfo ul>li{
+  margin: 7px 0;
+}
+/* index.html end */
+
+/* loginAndRegister.html  start */
+header.loginHeader{
+  width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Tahoma';
+}
+header.loginHeader::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 10px;
+  border-top: 1px solid #eee;
+  border-bottom-left-radius: 100% 20px;
+  border-bottom-right-radius: 100% 20px;
+  background: linear-gradient(to bottom, rgba(242,242,242,1) 0%,rgba(253,253,253,0) 100%); 
+}
+header.loginHeader .wrapper{
+  margin: 0 103px 12px;
+  display: flex;
+  justify-content: space-between;
+}
+header.loginHeader .left{
+  display: flex;
+  color: rgb(201,201,201);
+  font-size: 25px;
+  
+}
+header.loginHeader .left .label{
+  color: #666;
+  font-size: 22px;
+  position: relative;
+  margin-left: 26px;
+}
+header.loginHeader .left .label::before{
+  content: '';
+  display: block;
+  width: 2px;
+  height: 23px;
+  background-color: rgb(201,201,201);
+  position: absolute;
+  top: 4px;
+  left: -13px;
+}
+header.loginHeader .right{
+  display: flex;
+}
+header.loginHeader .right .label{
+  font-size: 13px;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+header.loginHeader .right .login{
+  padding: 0 20px;
+  font-weight: bold;
+  border: 1px solid rgb(221,221,221);
+  border-radius: 4px;
+  background-color: rgb(247,247,247);
+  color: rgb(102,102,102);
+  font-family: Arial;
+}
+main.registerContent{
+  width: 450px;
+  margin: 0 auto;
+}
+main.registerContent form p{
+  height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 23px;
+}
+main.registerContent form label{
+  width: 5em;
+  text-align: right;
+  display: inline-block;
+  overflow: hidden;
+  font-family: Tahoma;
+}
+main.registerContent form label::after{
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+main.registerContent form input.blank{
+  margin-left: 13px;
+  width: 307px;
+  height: inherit; 
+  box-sizing: border-box; 
+  font-size: inherit;
+}
+main.registerContent form button.register{
+  margin-top: 20px;
+  margin-left: 13px;
+  padding: 10px 0;
+  width: 307px;
+  border-radius: 3px;
+  border: none;
+  background-color: #5DA5B9;
+  opacity: 1;
+  transition: opacity .5s;
+  color: white;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+main.registerContent form button.register:hover{
+  opacity: .8;
+}
+/* loginAndRegister.html  start */
+
+
+/* categories.html  start */

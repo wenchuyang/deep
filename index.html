@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>沉潜书屋</title>
+
+  <!-- 沉潜书屋主页 -->
+  
+  <!-- 加载动画 -->
+  <style>
+      .welcomeLoading{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 3;
+        justify-content: center;
+        align-items: center;
+      }
+      .welcomeLoading.active{
+        display: flex;
+      }
+      .loading {
+        width: 100px;
+        height: 100px;
+        position: relative;
+      }
+      .loading::before,
+      .loading::after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background-color: black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: spread 1.5s linear infinite;
+      }
+      .loading::after {
+        animation-delay: .75s;
+      }
+      @keyframes spread {
+        from {
+          width: 0%;
+          height: 0%;
+          opacity: 1;
+        }
+        to {
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+        }
+      }
+    </style>
+
+  <!-- 轮播图需要用的css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/css/swiper.css">
+  
+  <!-- 图标需要的css -->
+  <style type="text/css">
+    .icon {
+       width: 23px; height: 23px;
+       vertical-align: -0.15em;
+       fill: #5DA5B9;
+       overflow: hidden;
+    }
+  </style>
+  
+  <!-- 自己写的css -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div id="welcomeLoading" class="welcomeLoading active">
+      <div class="loading"></div>
+  </div>
+  <header class="indexHeader">
+    <div class="head">
+      <div class="container">
+        <div class="deep"><img src="./img/bookstore.png" alt="" height=20></div>
+        <div class="right clearfix">
+          <div class="search clearfix">
+            <input type="text" class="search-input">
+            <button type="submit" class="search-submit">搜索</button>
+          </div>
+          <div class="loginAndRegister">
+            <a href="" class="login">注册</a>
+            /
+            <a href="" class="register">登录</a>
+            <a href="" class="manager">你是管理员？</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-bg">
+      <div class="mask"></div>
+    </div>
+    <div class="logo"><img src="./img/logo11.png" alt="" height=180></div>
+    <nav>
+      <div class="navigation">
+        <ul class="menu">
+            <li>
+              <a href="">主页</a> 
+              <ul class="submenu">
+                <li><a href="">管理员</a></li>
+                <li><a href="">用户</a></li>
+              </ul>
+            </li>
+            <li>/</li>
+            <li>
+              <a href="">类别</a>
+              <ul class="submenu">
+                <li><a href="">文学</a></li>
+                <li><a href="">社科</a></li>
+                <li><a href="">少儿</a></li>
+                <li><a href="">艺术</a></li>
+                <li><a href="">文教</a></li>
+              </ul>
+            </li>
+            <li>/</li>
+            <li>
+              <a href="">书评</a>
+              <ul class="submenu">
+                  <li><a href="">文学</a></li>
+                  <li><a href="">社科</a></li>
+                  <li><a href="">少儿</a></li>
+                  <li><a href="">艺术</a></li>
+                  <li><a href="">文教</a></li>
+              </ul>
+            </li>
+            <li>/</li>
+            <li>
+              <a href="">我的</a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="topSlot">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <ul class="popularBook">
+              <div class="title">书籍畅销榜</div>
+              <li><a href="#">禅与摩托车维修艺术</a></li>
+              <li><a href="#">百年孤独</a></li>
+              <li><a href="#">明朝那些事儿</a></li>
+              <li><a href="#">大秦帝国</a></li>
+              <li><a href="#">css揭秘</a></li>
+              <li><a href="#">三国演义</a></li>
+              <li><a href="#">西游记</a></li>
+            </ul>
+          </div>
+          <div class="swiper-slide">
+            <ul class="popularBook">
+                <div class="title">书籍收藏榜</div>
+                <li><a href="#">禅与摩托车维修艺术</a></li>
+                <li><a href="#">百年孤独</a></li>
+                <li><a href="#">明朝那些事儿</a></li>
+                <li><a href="#">大秦帝国</a></li>
+                <li><a href="#">css揭秘</a></li>
+                <li><a href="#">三国演义</a></li>
+                <li><a href="#">西游记</a></li>
+              </ul>
+          </div>
+          <div class="swiper-slide">
+            <ul class="popularBook">
+                <div class="title">畅销作家</div>
+                <li><a href="#">禅与摩托车维修艺术</a></li>
+                <li><a href="#">百年孤独</a></li>
+                <li><a href="#">明朝那些事儿</a></li>
+                <li><a href="#">大秦帝国</a></li>
+                <li><a href="#">css揭秘</a></li>
+                <li><a href="#">三国演义</a></li>
+                <li><a href="#">西游记</a></li>
+              </ul>
+          </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+    <section class="onSale">
+      <div class="mask">
+        <div class="content">
+            <div class="title">今日特价 ￥XXX</div>
+            <div class="bookName">《许三观卖血记》</div>
+            <div class="time">2018.6.30</div>
+            <p class="intro">《许三观卖血记》是余华1995年创作的一部长篇小说，
+              它以博大的温情描绘了磨难中的人生，以激烈的故事形式表达了人在面对厄运时求生的欲望。
+              小说讲述了许三观靠着卖血渡过了人生的一个个难关，
+              战胜了命运强加给他的惊涛骇浪，而当他老了，
+              知道自己的血再也没有人要时，精神却崩溃了。</p>
+            <div class="buy">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-buycar"></use>
+              </svg>
+              <span class="number">100</span>
+            </div>
+            <div class="like">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-like"></use>
+              </svg>
+              <span class="number">100</span>
+            </div>
+            <div class="more">
+              <a href="#">了解更多</a>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section class="recommend">
+      <div class="mask">
+        <div class="content">
+          <div class="title">小编精选</div>
+          <div class="bookName">《百年孤独》</div>
+          <div class="time">2018.6.30</div>
+          <p class="intro">《百年孤独》内容复杂，人物众多，情节离奇，
+            手法新颖。马尔克斯在书中溶汇了南美洲特有的五彩缤纷的文化。
+            他通过描写小镇马孔多的产生、兴盛到衰落、消亡，
+            表现了拉丁美洲令人惊异的疯狂历史。
+            小说以“汇集了不可思议的奇迹和最纯粹的现实生活”荣获1982年诺贝尔文学奖。</p>
+          <div class="buy">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-buycar"></use>
+              </svg>
+              <span class="number">100</span>
+            </div>
+            <div class="like">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-like"></use>
+              </svg>
+              <span class="number">100</span>
+            </div>
+            <div class="more">
+              <a href="#">了解更多</a>
+            </div>
+          </div>
+      </div>
+    </section>
+  </main>
+  <footer class="siteFooter">
+    <div class="container">
+      <div class="friendLinks">
+          <div class="title">友情链接：</div>
+          <ul>
+            <li><a href="http://http://www.bookschina.com/">中国图书网</a></li>
+            <li><a href="http://https://book.douban.com/">豆瓣读书</a></li>
+            <li><a href="http://http://www.kongfz.com/">孔夫子旧书网</a></li>
+          </ul>
+        </div>
+      <div class="bookstoreIntro">
+        <p>沉潜书屋，一家独立书店。不知即将成立于哪一年，或许只是一个乌托邦式的存在。
+          但是我希望它会存在，存在于这个快节奏的，偶尔有些浮躁的世界。
+          我希望沉潜书屋的读者们可以在这里重新找到阅读的乐趣，希望这个世界上还有那么一群人，
+          可以不带任何目的地去阅读一本书。
+        </p>
+        <p>沉潜书屋，让阅读更纯粹。</p>  
+      </div>
+      <div class="bookstoreInfo">
+        <ul>
+          <li>地址：江西省九江市浔阳区大中路xxx号</li>
+          <li>电话：150xxxx6784</li>
+          <li>邮编：332000</li>
+          <li>电子邮件：writing_happy@163.com</li>
+        </ul>
+      </div>
+      
+    </div>
+    
+  </footer>
+
+  </body>
+  
+
+  <!-- 轮播图需要用的JS代码 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/js/swiper.js"></script>
+  <script>
+    var mySwiper = new Swiper ('.swiper-container', {
+      direction: 'horizontal',
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    })
+    mySwiper.el.onmouseover = function(){
+      mySwiper.autoplay.stop();
+    }
+    // mySwiper.el.onmouseout = function(){
+    //   mySwiper.autoplay.start()
+    // }
+  </script>
+
+  <!-- 项目图标需要用的js代码 -->
+  <script src="//at.alicdn.com/t/font_663490_nuauggls0zmvaemi.js"></script>  
+  
+  <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+
+  <script src="./js/main.js"></script>
+  <script>
+    // 页面加载完成之后移除加载动画
+    welcomeLoading.classList.remove('active')
+  </script>
+</body>
+</html>
