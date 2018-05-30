@@ -146,8 +146,6 @@ nav > .navigation .menu li.active .submenu{
   top: -0.4em;
   padding: 0 28px;
   background-color: #fff;
-}
-.title{
   display: inline-block;
   font-size: 32px;
   font-family: 'Zeyada', '华文行楷';
@@ -188,6 +186,9 @@ nav > .navigation .menu li.active .submenu{
 }
 .onSale .content .title,
 .recommend .content .title{
+  display: inline-block;
+  font-size: 32px;
+  font-family: 'Zeyada', '华文行楷';
   position: absolute;
   left: 10px;
   top: 12px;
@@ -267,6 +268,9 @@ nav > .navigation .menu li.active .submenu{
   margin-right: 10%;
 }
 .siteFooter .friendLinks .title{
+  display: inline-block;
+  font-family: 'Zeyada', '华文行楷';
+  color: #5DA5B9;
   font-size: 23px;
 }
 .siteFooter .friendLinks ul>li{
@@ -401,3 +405,228 @@ main.registerContent form button.register:hover{
 
 
 /* categories.html  start */
+main.categories > .bookDetails,
+main.favorite > .bookDetails{
+  max-width: 900px;
+  margin: 104px auto 0;
+  padding: 37px 44px;
+  border: 1px solid rgb(240,240,240);
+  box-shadow: inset 0px 0px 10px 1px rgba(240,240,240,1);
+}
+main.categories > .bookDetails > .wrapper,
+main.favorite > .bookDetails > .wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+main.categories > .bookDetails .bookImage,
+main.favorite > .bookDetails .bookImage{
+  width: 20%;
+}
+main.categories > .bookDetails .bookImage > img,
+main.favorite > .bookDetails .bookImage > img{
+  vertical-align: top;
+}
+
+main.categories > .bookDetails .bookInfo,
+main.favorite > .bookDetails .bookInfo{
+  width: 30%;
+  line-height: 25px;
+}
+main.categories > .bookDetails .bookInfo .title,
+main.favorite > .bookDetails .bookInfo .title{
+  font-weight: bold;
+}
+main.categories > .bookDetails .bookIntro,
+main.favorite > .bookDetails .bookIntro{
+  width: 50%;
+  position: relative;
+}
+main.categories > .bookDetails .bookIntro p,
+main.favorite > .bookDetails .bookIntro p{
+  line-height: 25px;
+  text-indent: 2em;
+}
+main.categories > .bookDetails .bookIntro ul,
+main.favorite > .bookDetails .bookIntro ul{
+  width: 120px;
+  position: absolute;
+  top: 100%;
+  right: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+main.categories > .bookDetails .bookIntro ul>li:nth-child(1),
+main.favorite > .bookDetails .bookIntro ul>li:nth-child(1){
+  width: 23px;
+}
+main.categories > .bookDetails .bookIntro ul>li:nth-child(2),
+main.favorite > .bookDetails .bookIntro ul>li:nth-child(2){
+  width: 23px;
+  margin-right: 5px;
+}
+main.categories > .bookDetails .bookIntro ul>li>svg:hover,
+main.favorite > .bookDetails .bookIntro ul>li>svg:hover{
+  fill: #5DA5B9;
+  cursor: pointer;
+}
+
+
+
+/* bookDetail页面 */
+main.bookDetail,
+main.personal{
+  max-width: 1500px;
+  margin: 104px auto 0;
+}
+main.bookDetail > .comment,
+main.personal > .comment{
+  width: 70%;
+  float: left;
+}
+main.bookDetail > .comment > .singleComment,
+main.personal > .comment > .singleComment{
+  margin: 0 0 90px;
+  padding: 37px 44px;
+  border: 1px solid rgb(240,240,240);
+  box-shadow: inset 0px 0px 10px 1px rgba(240,240,240,1);
+}
+main.bookDetail > .comment > .singleComment > .baseInfo,
+main.personal > .comment > .singleComment > .baseInfo{
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+main.bookDetail > .comment > .singleComment >p,
+main.personal > .comment > .singleComment >p{
+  text-indent: 2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+main.bookDetail > .aside,
+main.personal > .aside{
+  margin-left: 5%;
+  max-width: 20%;
+  float: left;
+}
+main.bookDetail > .aside > .about,
+main.bookDetail > .aside > .other,
+main.personal > .aside > .about,
+main.personal > .aside > .other{
+  padding: 37px 44px;
+  border: 1px solid rgb(240,240,240);
+  box-shadow: inset 0px 0px 10px 1px rgba(240,240,240,1);
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+main.bookDetail > .aside > .about > .title,
+main.bookDetail > .aside > .other > .title,
+main.personal > .aside > .about > .title,
+main.personal > .aside > .other > .title{
+  position: absolute;
+  top: -0.4em;
+  padding: 0 20px;
+  background-color: #fff;
+  display: inline-block;
+  font-size: 23px;
+  font-family: 'Zeyada', '华文行楷';
+  color: #5DA5B9;
+}
+main.bookDetail > .aside > .about > ul>li,
+main.personal > .aside > .about > ul>li{
+  line-height: 30px;
+}
+main.bookDetail > .aside > .about > ul>li .title,
+main.personal > .aside > .about > ul>li .title{
+  font-weight: bold;
+}
+main.bookDetail > .aside > .other,
+main.personal > .aside > .other{
+  margin-top: 90px;
+}
+main.bookDetail > .aside > .other > .images{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+main.bookDetail > .aside > .other > .images >img{
+  width: 30%;
+  margin: 7px 0; 
+}
+
+
+/* personal个人页面 */
+main.personal > .aside > .other >ul>li{
+  line-height: 30px;
+  padding: 5px 0 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* cart购物车页面 */
+main.cart{
+  max-width: 900px;
+  margin: 104px auto 0;
+}
+main.cart > .books > .book{
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  background-color: #fcfcfc;
+  padding: 23px 51px;
+  position: relative;
+}
+main.cart > .books > .book > input{
+  position: absolute;
+  left: 27px;
+  top: 27px;
+}
+main.cart > .books > .book >ul{
+  display: flex;
+  justify-content: space-between;
+}
+main.cart > .books > .book >ul>li>.substance{
+  font-weight: bold;
+}
+main.cart > .books > .book >ul>li>ul>li:first-child>.substance{
+  font-weight: bold;
+}
+main.cart > .calcuBar{
+  margin-top: 17px;
+  max-width: 100%;
+  background-color: #E5E5E5;
+  font-size: 13px;
+}
+main.cart > .calcuBar > .settlements{
+  background-color: #b0b0b0;
+}
+main.cart > .calcuBar > label,
+main.cart > .calcuBar > div{
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 12px;
+}
+main.cart > .calcuBar > div{
+  margin-left: 30px;
+}
+main.cart > .calcuBar > div:last-child{
+  float: right;
+  padding: 0 35px;
+  font-size: 20px;
+  color: white;
+}
+
+/* favorite收藏夹 */
+/* 与书籍分类页面相同 category */
+
+
+/* manager页面 */
+main.manager{
+  margin-top: 64px; 
+}

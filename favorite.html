@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>陌遥昔的收藏夹</title>
+
+  <!-- 图书类别进去之后的页面 -->
+
+ 
+
+ <!-- icon需要用的css -->
+ <style type="text/css">
+  .icon {
+     width: 23px; height: 22px;
+     vertical-align: -0.15em;
+     fill: currentColor;
+     overflow: hidden;
+  }
+ </style>
+
+
+<!-- 用一个分页器。从数据库中读取数据然后再把它展示到页面上.... -->
+
+
+ <!-- 自己写的css -->
+ <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div id="welcomeLoading" class="welcomeLoading active">
+      <div class="loading"></div>
+  </div>
+  <header class="indexHeader">
+    <div class="head">
+      <div class="container">
+        <div class="deep"><img src="./img/bookstore.png" alt="" height=20></div>
+        <div class="right clearfix">
+          <div class="search clearfix">
+            <input type="text" class="search-input">
+            <button type="submit" class="search-submit">搜索</button>
+          </div>
+          <div class="loginAndRegister">
+            <a href="" class="login">注册</a>
+            /
+            <a href="" class="register">登录</a>
+            <a href="" class="manager">你是管理员？</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-bg">
+      <div class="mask"></div>
+    </div>
+    <div class="logo"><img src="./img/logo11.png" alt="" height=180></div>
+    <nav>
+      <div class="navigation">
+        <ul class="menu">
+            <li>
+              <a href="">主页</a> 
+              <ul class="submenu">
+                <li><a href="">管理员</a></li>
+                <li><a href="">用户</a></li>
+              </ul>
+            </li>
+            <li>/</li>
+            <li>
+              <a href="">类别</a>
+              <ul class="submenu">
+                <li><a href="">文学</a></li>
+                <li><a href="">社科</a></li>
+                <li><a href="">少儿</a></li>
+                <li><a href="">艺术</a></li>
+                <li><a href="">文教</a></li>
+              </ul>
+            </li>
+            <li>/</li>
+            <li>
+              <a href="">书评</a>
+              <ul class="submenu">
+                  <li><a href="">文学</a></li>
+                  <li><a href="">社科</a></li>
+                  <li><a href="">少儿</a></li>
+                  <li><a href="">艺术</a></li>
+                  <li><a href="">文教</a></li>
+              </ul>
+            </li>
+            <li>/</li>
+            <li>
+              <a href="">我的</a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <main class="favorite">
+    <div class="bookDetails">
+      <div class="wrapper">
+        <div class="bookImage">
+          <img src="/img/明朝那些事儿.jpg" alt="" width=120>
+        </div>
+        <div class="bookInfo">
+          <div class="bookName">
+            <span class="title">书名：</span>
+            <span class="substance">《许三观卖血记》</span>
+          </div>
+          <div class="author">
+            <span class="title">作者：</span>
+            <span class="substance">余华</span>
+          </div>
+          <div class="publisher">
+            <span class="title">出版社：</span>
+            <span class="substance">南海出版公司</span>
+          </div>
+          <div class="time">
+            <span class="title">出版时间：</span>
+            <span class="substance">1998-9</span>
+          </div>
+          <div class="ISBN">
+            <span class="title">ISBN：</span>
+            <span class="substance">9787544211765</span>
+          </div>
+          <div class="originPrice">
+            <span class="title">定价：</span>
+            <span class="substance">￥30.00</span>
+          </div>
+          <div class="nowPrice">
+            <span class="title">售价：</span>
+            <span class="substance">￥23.00</span>
+          </div>
+        </div>
+        <div class="bookIntro">
+          <p>《许三观卖血记》是余华1995年创作的一部长篇小说，
+            它以博大的温情描绘了磨难中的人生，
+            以激烈的故事形式表达了人在面对厄运时求生的欲望。
+            小说讲述了许三观靠着卖血渡过了人生的一个个难关，
+            战胜了命运强加给他的惊涛骇浪，而当他老了，
+            知道自己的血再也没有人要时，精神却崩溃了。</p>
+          <ul>
+            <li>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-like"></use>
+              </svg>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-buycar"></use>
+              </svg>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="siteFooter">
+    <div class="container">
+      <div class="friendLinks">
+          <div class="title">友情链接：</div>
+          <ul>
+            <li><a href="http://http://www.bookschina.com/">中国图书网</a></li>
+            <li><a href="http://https://book.douban.com/">豆瓣读书</a></li>
+            <li><a href="http://http://www.kongfz.com/">孔夫子旧书网</a></li>
+          </ul>
+        </div>
+      <div class="bookstoreIntro">
+        <p>沉潜书屋，一家独立书店。不知即将成立于哪一年，或许只是一个乌托邦式的存在。
+          但是我希望它会存在，存在于这个快节奏的，偶尔有些浮躁的世界。
+          我希望沉潜书屋的读者们可以在这里重新找到阅读的乐趣，希望这个世界上还有那么一群人，
+          可以不带任何目的地去阅读一本书。
+        </p>
+        <p>沉潜书屋，让阅读更纯粹。</p>  
+      </div>
+      <div class="bookstoreInfo">
+        <ul>
+          <li>地址：江西省九江市浔阳区大中路xxx号</li>
+          <li>电话：150xxxx6784</li>
+          <li>邮编：332000</li>
+          <li>电子邮件：writing_happy@163.com</li>
+        </ul>
+      </div>
+      
+    </div>
+    
+  </footer>
+
+  </body>
+
+  <!-- icon使用的js -->
+  <script src="//at.alicdn.com/t/font_663490_nuauggls0zmvaemi.js"></script>
+  
+  <script src="./js/main.js"></script>
+</body>
+</html>
