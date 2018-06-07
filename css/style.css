@@ -3,7 +3,7 @@ a{ text-decoration: none; color: inherit;}
 
 button{ color: inherit; }
 ul>li{ list-style: none; }
-input{ }
+body{ background: linear-gradient(to bottom, rgba(121,181,48,.5) 0%,rgba(255,255,255,0) 100%); }
 input:focus, button:focus{ outline: none; }
 .clearfix::after{
   content: '';
@@ -135,28 +135,75 @@ nav > .navigation .menu li.active .submenu{
   max-width: 900px;
   min-height: 200px;
 }
-.topSlot ul{
+.topSlot .content-wrapper{
   box-shadow: inset 0px 0px 10px 1px rgba(240,240,240,1);
   text-align: center;
   margin-top: 20px;
   padding: 0 82px 46px;
+  position: relative;
+}
+.topSlot .content-wrapper .backgroundMask{
+  filter: blur(5px) brightness(.9);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.topSlot .content-wrapper.popularBook .background{
+  background: url(https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2011/12/Screen-Shot-2011-12-20-at-5.29.18-PM.png) no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+.topSlot .content-wrapper.popularLike .background{
+  background: url(https://res.cloudinary.com/simpleview/image/fetch/f_auto,q_75/https://res.cloudinary.com/simpleview/image/upload/crm/parkcity/books_4859503D-C558-40BD-BF8E0023F8F2E057_e34e4e7e-ce74-4db0-b76c2d6bffa12303.jpg) no-repeat;  
+  background-size: cover;
+  height: 100%;
+}
+.topSlot .content-wrapper.popularAuthor .background{
+  background: url(https://www.eldiario.es/clm/Europa-Press_EDIIMA20160422_0791_18.jpg) no-repeat;
+  background-size: cover;
+  height: 100%;
 }
 .topSlot .title{
   position: relative;
-  top: -0.4em;
-  padding: 0 28px;
-  background-color: #fff;
+  top: -0.6em;
+  padding: 7px 28px 7px;
   display: inline-block;
+  line-height: 32px;
   font-size: 32px;
   font-family: 'Zeyada', '华文行楷';
   color: #5DA5B9;
+  background-color: #d7f1f7;
+  border-radius: 32px;
 }
-.topSlot ul>li{
+.topSlot .content-wrapper ul.list-wrapper{
+  position: relative;
+	background: rgba(182,182,182,.7); /* Fallback */
+	background: linear-gradient(-150deg, transparent 1.5em, rgba(182,182,182,.7) 0);
+	padding: 20px 48px;
+	color: black;
+  border-radius: .5em;  
+  margin: 0 auto;
+}
+.topSlot .content-wrapper ul.list-wrapper::before{
+  content: '';
+	position: absolute;
+	top: 0; right: 0;
+	width: 1.73em; height: 3em;
+	background: linear-gradient(to left bottom, transparent 50%, rgba(0,0,0,.2) 0, rgba(0,0,0,.4)) 100% 0 no-repeat;
+	transform: translateY(-1.3em) rotate(-30deg);
+	transform-origin: bottom right;
+	border-bottom-left-radius: .5em;
+	box-shadow: -.2em .2em .3em -.1em rgba(0,0,0,.15)
+}
+.topSlot ul li{
   padding: 20px 0;
   text-align: center;
   border-bottom: 1px solid #f0f0f0;
 }
-.topSlot ul>li>a:hover{
+.topSlot ul li>a:hover{
   color: #5DA5B9;
 }
 .onSale,
@@ -165,24 +212,46 @@ nav > .navigation .menu li.active .submenu{
   max-width: 900px;
   height: 500px;
   margin: 104px auto 0; 
-  background: url(../img/placeimg_640_480_tech.jpg) center no-repeat;
+  color: #000;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.onSale .mask .bg{
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8zQMQD7Tyu-5sgG03s_7Y0fpozQCH5nn-7762Ff3eL7bCdmvx) center no-repeat;
   background-size: cover;
-  color: black;
+  height: 100%;
+}
+.recommend .mask .bg{
+  background: url(http://vnlocalize.com/wp-content/uploads/2017/06/art-of-transtlation-1.jpg) center no-repeat;
+  background-size: cover;
+  height: 100%;
 }
 .onSale .mask,
 .recommend .mask{
-  background: rgba(255, 255, 255, .8);
+  filter: blur(3px) brightness(.9);
   height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .onSale .content,
 .recommend .content{
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 0 30px;
+  padding: 50px 30px;
+  margin-left: 150px;
+  margin-right: 150px;
+  background-color: rgba(245, 245, 245, .8);
+  border: 1px double rgb(240,240,240);
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 10px 1px rgba(240,240,240,1);
+
 }
 .onSale .content .title,
 .recommend .content .title{
@@ -243,6 +312,8 @@ nav > .navigation .menu li.active .submenu{
   background-color: rgb(121,195,215);
   color: white;
   transition: all .5s;
+  border-radius: 2px;
+  box-shadow: 2px 3px 10px 0px rgba(221,13,NaN,1);
 }
 .onSale .content .more:hover,
 .recommend .content .more:hover{
@@ -355,6 +426,10 @@ header.loginHeader .right .login{
 main.registerContent{
   width: 450px;
   margin: 0 auto;
+  padding: 40px 30px;
+  background: rgba(182,182,182,.7);
+  color: black;
+  border-radius: .5em;
 }
 main.registerContent form p{
   height: 35px;
@@ -489,6 +564,8 @@ main.personal > .comment > .singleComment{
   padding: 37px 44px;
   border: 1px solid rgb(240,240,240);
   box-shadow: inset 0px 0px 10px 1px rgba(240,240,240,1);
+  line-height: 2em;
+  background: rgba(182,182,182,.45);
 }
 main.bookDetail > .comment > .singleComment > .baseInfo,
 main.personal > .comment > .singleComment > .baseInfo{
@@ -524,15 +601,17 @@ main.personal > .aside > .other{
   position: relative;
   display: flex;
   justify-content: center;
+  background: rgba(182,182,182,.45);  
 }
 main.bookDetail > .aside > .about > .title,
 main.bookDetail > .aside > .other > .title,
 main.personal > .aside > .about > .title,
 main.personal > .aside > .other > .title{
   position: absolute;
-  top: -0.4em;
-  padding: 0 20px;
-  background-color: #fff;
+  top: -0.7em;
+  padding: 5px 20px;
+  background-color: #d7f1f7;
+  border-radius: 22px;
   display: inline-block;
   font-size: 23px;
   font-family: 'Zeyada', '华文行楷';
