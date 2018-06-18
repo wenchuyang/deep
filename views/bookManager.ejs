@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>沉潜书屋书籍管理</title>
+
+  <!-- 图书类别进去之后的页面 -->
+
+ 
+
+ <!-- icon需要用的css -->
+ <style type="text/css">
+  .icon {
+     width: 23px; height: 22px;
+     vertical-align: -0.15em;
+     fill: currentColor;
+     overflow: hidden;
+  }
+ </style>
+
+ 
+
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+
+
+ <!-- 自己写的css -->
+ <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header></header>
+  <main class="manager">
+    <div class="container">
+      <div role="tabpanel" class="tab-pane" id="bookManage">
+        <div class="bookInfoManage">
+          <% if(search === undefined){ %>
+            <form action="/addBook" method="post" class="bookDetails addBook">
+              <div class="wrapper">
+                <div class="bookInfo">
+                  <div class="baseInfo">
+                    <div class="bookName">
+                      <span class="title">书名：</span>
+                      <input class="form-control" type="text"placeholder="" name="name">
+                    </div>
+                    <div class="author">
+                      <span class="title">作者：</span>
+                      <input class="form-control" type="text"placeholder="" name="author">
+                    </div>
+                    <div class="publisher">
+                      <span class="title">出版社：</span>
+                      <input class="form-control" type="text"placeholder="" name="publisher">
+                    </div>
+                    <div class="printed">
+                      <span class="title">装帧：</span>
+                      <input class="form-control" type="text"placeholder="" name="printed">
+                    </div>
+                    <div class="ISBN">
+                      <span class="title">ISBN：</span>
+                      <input class="form-control" type="text"placeholder="" name="isbn">
+                    </div>
+                  </div>
+                  <div class="otherInfo">
+                    <div class="originPrice">
+                      <span class="title">定价：</span>
+                      <input class="form-control" type="text"placeholder="" name="price">
+                    </div>
+                    <div class="nowPrice">
+                      <span class="title">售价：</span>
+                      <input class="form-control" type="text"placeholder="" name="reallyPrice">
+                    </div>
+                    <div class="stock">
+                      <span class="title">库存：</span>
+                      <input class="form-control" type="text"placeholder="" name="stock">
+                    </div>
+                    <div class="image">
+                      <span class="title">图片：</span>
+                      <input class="form-control" type="text"placeholder="请填写图片的url" name="image">
+                    </div>
+                    <div class="bookCategory">
+                      <span class="title">类别：</span>
+                      <select class="form-control" name="caid">
+                        <% categories.forEach(function(category){ %>
+                          <option value="<%= category.caid %>"><%= category.name %></option>
+                        <% }) %>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="bookIntro">
+                  <textarea class="form-control" rows="6" placeholder="请在此处填写书籍简介" name="intro"></textarea>  
+                </div>
+                <button type="submit" class="btn btn-info" style="margin: 15px auto -10px; width: 150px;">添加</button>
+              </div>
+            </form>
+          <% } %>
+        <% for(let i=0; i<book.length; i++){ %>
+          <form class="bookDetails bookOp<%= i %> bookOp " method="post" name="bookOp">
+            <div class="wrapper">
+              <div class="bookInfo">
+                <div class="bookImage">
+                  <img src="<%= book[i].image %>" alt="" width=120>
+                  <span class="substance"></span>
+                  <input class="form-control" type="text" value="<%= book[i].image %>" name="image">
+                </div>
+                <div class="baseInfo">
+                  <div class="bookName">
+                    <span class="title">书名：</span>
+                    <span class="substance">《<%= book[i].bookname %>》</span>
+                    <input class="form-control" type="text" name="name" value="<%= book[i].bookname %>">
+                  </div>
+                  <div class="author">
+                    <span class="title">作者：</span>
+                    <span class="substance"><%= book[i].author %></span>
+                    <input class="form-control" type="text" name="author" value="<%= book[i].author %>">
+                  </div>
+                  <div class="publisher">
+                    <span class="title">出版社：</span>
+                    <span class="substance"><%= book[i].publisher %></span>
+                    <input class="form-control" type="text" name="publisher" value="<%= book[i].publisher %>">
+                  </div>
+                  <div class="printed">
+                    <span class="title">装帧：</span>
+                    <span class="substance"><%= book[i].printed %></span>
+                    <input class="form-control" type="text" name="printed" value="<%= book[i].printed %>">
+                  </div>
+                  <div class="ISBN">
+                    <span class="title">ISBN：</span>
+                    <span class="substance"><%= book[i].isbn %></span>
+                    <input class="form-control blank" type="text" name="isbn" value="<%= book[i].isbn %>">
+                  </div>
+                </div>
+                <div class="otherInfo">
+                  <div class="originPrice">
+                    <span class="title">定价：</span>
+                    <span class="substance">￥<%= book[i].price %></span>
+                    <input class="form-control" type="text" name="price" value="<%= book[i].price %>">
+                  </div>
+                  <div class="nowPrice">
+                    <span class="title">售价：</span>
+                    <span class="substance">￥<%= book[i].reallyPrice %></span>
+                    <input class="form-control" type="text" name="reallyPrice" value="<%= book[i].reallyPrice %>">
+                  </div>
+                  <div class="stock">
+                    <span class="title">库存：</span>
+                    <span class="substance"><%= book[i].stock %></span>
+                    <input class="form-control" type="text" name="stock" value="<%= book[i].stock %>">
+                  </div>
+                  <div class="bookCategory">
+                    <span class="title">所属分类：</span>
+                    <span class="substance"><%= book[i].categoryname %></span>
+                    <select class="form-control" name="caid">
+                      <option value="<%= book[i].caid %>"><%= book[i].categoryname %></option>
+                      <% categories.forEach(function(category){ %>
+                        <option value="<%= category.caid %>"><%= category.name %></option>
+                      <% }) %>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="bookIntro">
+                <p><%= book[i].intro %></p>
+                <textarea class="form-control" rows="6" name="intro" style="text-indent: 2em;"><%= book[i].intro %></textarea>
+              </div>
+              <div class="buttons" style="display: flex; justify-content: flex-end;">
+                <button type="button" class="btn btn-warning changeCategoryButton change" onclick="changeBook('<%= i %>')" >修改</button>
+                <button type="button" class="btn btn-warning changeCategoryButton submitChange" onclick="submitChangeBook('<%= i %>')" >提交</button>
+                <button type="button" class="btn btn-danger" onclick="deleteBook('<%= i %>')" style="margin-left: 20px;">删除</button>
+              </div>
+            </div>
+          </form>
+        <% } %>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+</body>
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script>
+    $('header').load('header.html')
+    $('footer').load('footer.html')
+  </script>
+  <!-- icon使用的js -->
+  <script src="//at.alicdn.com/t/font_663490_nuauggls0zmvaemi.js"></script>
+  
+  
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/main.js"></script>
+  
+  <script>
+    $(".bookOp .bookInfo input").css("display", "none")
+    $(".bookOp .bookInfo select").css("display", "none")
+    $(".bookOp .bookIntro textarea").css("display", "none")
+    $(".bookOp button.submitChange").css("display", "none")
+    function changeBook(index){
+      let span = $(".bookOp"+index+" .bookInfo span.substance")
+      let input = $(".bookOp"+index+" .bookInfo input")
+      $(".bookOp"+index+" button.submitChange").css("display", "inline-block")
+      $(".bookOp"+index+" button.change").css("display", "none")
+      $(".bookOp .bookInfo select").css("display", "inline-block")
+      $(".bookOp"+index+" .bookIntro textarea").css("display", "block")
+      $(".bookOp"+index+" .bookIntro p").css("display", "none")
+      for(let i=0; i<span.length; i++){
+        if($(input[i]).hasClass("blank")) continue;
+        $(span[i]).css("display", "none")
+        $(input[i]).css("display", "inline-block")
+      }
+    }
+  </script>
+  <% if(search === undefined){ %> 
+    <script>
+      function submitChangeBook(index){
+        $(".bookOp button.submitChange").css("display", "none")
+        $(".bookOp button.change").css("display", "inline-block")
+        document.bookOp[index].action="/changeBook";//提交的url
+        document.bookOp[index].submit();
+      }
+      function deleteBook(index){
+        document.bookOp[index].action="/deleteBook";//提交的url
+        document.bookOp[index].submit();
+      }  
+    </script>
+  <% }else{ %>
+    <script>
+      // 搜索结果只有一条的时候没有数组.....所以需要直接提交bookOp而不是bookOp[0]
+      function submitChangeBook(index){
+        $(".bookOp button.submitChange").css("display", "none")
+        $(".bookOp button.change").css("display", "inline-block")
+        document.bookOp.action="/changeBook";//提交的url
+        document.bookOp.submit();
+      }
+      function deleteBook(index){
+        document.bookOp.action="/deleteBook";//提交的url
+        document.bookOp.submit();
+      }
+    </script>
+  <% } %>
+</html>

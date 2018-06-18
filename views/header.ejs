@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+
+  
+</head>
+<body>
+  <header class="indexHeader">
+    <div class="head">
+      <div class="container">
+        <div class="deep"><img src="./img/bookstore.png" alt="" height=20></div>
+        <div class="right clearfix">
+          <% if(loginUser.power == 1){ %>
+            <form action="/managerSearchBook" method="POST" class="search clearfix">
+              <input type="text" name="bookName" class="search-input" placeholder="输入书名进行搜索" style="color: black;">
+              <button type="submit" class="search-submit">搜索</button>
+            </form>
+          <% }else{ %>
+            <form action="/searchBook" method="POST" class="search clearfix">
+              <input type="text" name="bookName" class="search-input" placeholder="输入书名进行搜索" style="color: black;">
+              <button type="submit" class="search-submit">搜索</button>
+            </form>
+          <% } %>
+          <div class="loginAndRegister">
+            <% if(loginUser){  %>
+              <a href="personal.html" class="register"> 当前用户：<%= loginUser.name %> </a> &nbsp;&nbsp;
+              <a href="/changeUser">切换账号</a> 
+            <% }else{ %>
+              <a href="loginAndRegister.html" class="register">注册&nbsp;/&nbsp;登录</a>
+            <% } %>
+            <a href="/managerLogin" class="manager">你是管理员？</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="logo-bg">
+      <div class="mask"></div>
+    </div>
+    <div class="logo"><img src="./img/logo11.png" alt="" height=180></div>
+    <nav>
+      <div class="navigation">
+        <ul class="menu">
+          <li>
+            <a href="/">主页</a> 
+            <ul class="submenu">
+              <li><a href="manager.html">管理员</a></li>
+              <li><a href="/">用户</a></li>
+            </ul>
+          </li>
+          <li>/</li>
+          <li>
+            <a href="javascript:;">类别</a>
+            <% if(loginUser.power == 1){ %>
+              <ul class="submenu">
+                <% categories.forEach(function(category){ %>
+                  <li>
+                    <form action="/managerCategorySearchBook" method="post">
+                      <input type="text" name="caid" value="<%= category.caid %>" style="display: none;">
+                      <button type="submit" style="border: none; background-color: inherit;"><%= category.name %></button>
+                    </form>
+                  </li>
+                <% }) %>
+              </ul>
+           <% }else{ %>
+              <ul class="submenu">
+                <% categories.forEach(function(category){ %>
+                  <li>
+                    <form action="/categorySearchBook" method="post">
+                      <input type="text" name="caid" value="<%= category.caid %>" style="display: none;">
+                      <button type="submit" style="border: none; background-color: inherit;"><%= category.name %></button>
+                    </form>
+                  </li>
+                <% }) %>
+              </ul>
+           <% } %>
+          </li>
+          <li>/</li>
+          <li>
+            <% if(loginUser.power == 1){ %>
+              <a href="javascript:;">管理员</a>
+              <ul class="submenu">
+                <li><a href="categoryManager.html">图书类别管理</a></li>
+                <li><a href="bookManager.html">书籍管理</a></li>
+                <li><a href="personal.html">我的主页</a></li>
+              </ul>
+            <% }else{ %>
+              <a href="javascript:;">我的</a>
+              <ul class="submenu">
+                <li><a href="cart.html">我的购物车</a></li>
+                <li><a href="favorite.html">我的收藏</a></li>
+                <li><a href="personal.html">我的主页</a></li>
+              </ul>
+            <% } %>
+            
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+</body>
+<script>
+  /* 导航栏鼠标浮上去显示子菜单*/
+  let liTags = document.querySelectorAll('.navigation > ul > li')
+  for(let i=0; i<liTags.length; i++){
+    liTags[i].onmouseenter = function(x){
+      let li = x.currentTarget
+      li.classList.add('active')
+    }
+    liTags[i].onmouseleave = function(x){
+      let li = x.currentTarget
+      li.classList.remove('active')
+    }
+  }
+</script>
+</html>

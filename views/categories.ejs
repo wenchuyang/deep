@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>人文社科</title>
+
+  <!-- 图书类别进去之后的页面 -->
+
+ 
+
+ <!-- icon需要用的css -->
+ <style type="text/css">
+  .icon {
+     width: 23px; height: 22px;
+     vertical-align: -0.15em;
+     fill: currentColor;
+     overflow: hidden;
+  }
+ </style>
+
+
+ <!-- 自己写的css -->
+ <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header></header>
+  <main class="categories">
+    <% for(let i=0; i<book.length; i++){ %>
+      <div class="bookDetails">
+        <div class="wrapper">
+          <div class="bookInfo">
+            <div class="bookImage">
+              <img src="<%= book[i].image %>" alt="" width=120>
+            </div>
+            <div class="baseInfo">
+              <div class="bookName">
+                <span class="title">书名：</span>
+                <span class="substance">《<%= book[i].bookname %>》</span>
+              </div>
+              <div class="author">
+                <span class="title">作者：</span>
+                <span class="substance"><%= book[i].author %></span>
+              </div>
+              <div class="publisher">
+                <span class="title">出版社：</span>
+                <span class="substance"><%= book[i].publisher %></span>
+              </div>
+              <div class="printed">
+                <span class="title">装帧：</span>
+                <span class="substance"><%= book[i].printed %></span>
+              </div>
+              <div class="ISBN">
+                <span class="title">ISBN：</span>
+                <span class="substance"><%= book[i].isbn %></span>
+              </div>
+            </div>
+            <div class="otherInfo">
+              <div class="originPrice">
+                <span class="title">定价：</span>
+                <span class="substance">￥<%= book[i].price %></span>
+              </div>
+              <div class="nowPrice">
+                <span class="title">售价：</span>
+                <span class="substance">￥<%= book[i].reallyPrice %></span>
+              </div>
+              <div class="stock">
+                <span class="title">库存：</span>
+                <span class="substance"><%= book[i].stock %></span>
+              </div>
+              <div class="bookCategory">
+                <span class="title">所属分类：</span>
+                <span class="substance"><%= book[i].categoryname %></span>
+              </div>
+            </div>
+          </div>
+          <div class="bookIntro">
+            <p><%= book[i].intro %></p>
+            <ul>
+              <li>
+                <form action="/readerCollect" method="post">
+                  <input type="text" name="isbn" value="<%= book[i].isbn %>" style="display: none;">
+                  <button type="submit" style="border: none; background-color: inherit;">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-like"></use>
+                    </svg>
+                  </button>
+                </form>
+              </li>
+              <li>
+                <form action="/readerBuy" method="post">
+                  <input type="text" name="isbn" value="<%= book[i].isbn %>" style="display: none;">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-buycar"></use>
+                  </svg>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </main>
+  <footer></footer>
+</body>
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script>
+    $('header').load('header.html')
+    $('footer').load('footer.html')
+  </script>
+  <!-- icon使用的js -->
+  <script src="//at.alicdn.com/t/font_663490_nuauggls0zmvaemi.js"></script>
+  
+  <script src="./js/main.js"></script>
+</html>
