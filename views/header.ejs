@@ -26,7 +26,7 @@
             </form>
           <% } %>
           <div class="loginAndRegister">
-            <% if(loginUser){  %>
+            <% if(loginUser.name != undefined){  %>
               <a href="personal.html" class="register"> 当前用户：<%= loginUser.name %> </a> &nbsp;&nbsp;
               <a href="/changeUser">切换账号</a> 
             <% }else{ %>
@@ -46,10 +46,6 @@
         <ul class="menu">
           <li>
             <a href="/">主页</a> 
-            <ul class="submenu">
-              <li><a href="manager.html">管理员</a></li>
-              <li><a href="/">用户</a></li>
-            </ul>
           </li>
           <li>/</li>
           <li>
@@ -78,25 +74,28 @@
               </ul>
            <% } %>
           </li>
+          <% if(loginUser.power == 1){ %>
           <li>/</li>
           <li>
-            <% if(loginUser.power == 1){ %>
-              <a href="javascript:;">管理员</a>
-              <ul class="submenu">
-                <li><a href="categoryManager.html">图书类别管理</a></li>
-                <li><a href="bookManager.html">书籍管理</a></li>
-                <li><a href="personal.html">我的主页</a></li>
-              </ul>
-            <% }else{ %>
-              <a href="javascript:;">我的</a>
-              <ul class="submenu">
-                <li><a href="cart.html">我的购物车</a></li>
-                <li><a href="favorite.html">我的收藏</a></li>
-                <li><a href="personal.html">我的主页</a></li>
-              </ul>
-            <% } %>
-            
+            <a href="javascript:;">管理员</a>
+            <ul class="submenu">
+              <li><a href="categoryManager.html">图书类别管理</a></li>
+              <li><a href="bookManager.html">书籍管理</a></li>
+              <li><a href="cartManager.html">订单管理</a></li>
+              <li><a href="commentManager.html">书评管理</a></li>
+            </ul>     
           </li>
+          <% }else if(loginUser.name != undefined){ %>
+          <li>/</li>
+          <li>
+            <a href="javascript:;">我的</a>
+            <ul class="submenu">
+              <li><a href="cart.html">我的购物车</a></li>
+              <li><a href="favorite.html">我的收藏</a></li>
+              <li><a href="personal.html">我的书评</a></li>
+            </ul>
+          </li>
+          <% } %>
         </ul>
       </div>
     </nav>

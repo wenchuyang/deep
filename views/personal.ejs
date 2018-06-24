@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>陌遥昔</title>
+  <title>
+    <% if(isManager){ %>
+      书评管理区
+    <% }else{ %>
+      <%= user[0].username %>
+    <% } %>
+  </title>
 
   <!-- icon使用的css -->
   <style type="text/css">
@@ -22,100 +28,73 @@
 <body>
   <header></header>
   <main class="personal clearfix">
-    <div class="comment">
+    <% if(isManager){ %>
+      <div class="comment" style="float: none; margin: 0 auto;">
+    <% }else{ %>
+      <div class="comment">
+    <% } %>
+    <% if(comments.length == 0){ %>
       <div class="singleComment">
-        <ul class="baseInfo">
-          <li>许三观卖血记读后感</li>
-          <li>2018.5.28</li>
-          <li>许三观卖血记</li>
-          <li>
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-zan"></use>
-            </svg>
-            200
-          </li>
-          <li>
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-icon02"></use>
-            </svg>
-            100
-          </li>
-        </ul>
-        <p class="content">
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-          读了本书之后感受颇深吧啦巴拉巴拉巴拉一堆话
-        </p>
+        <p>您暂时还没有评论哟</p>
       </div>
+    <% } %>
+      <% for(let i=0; i<comments.length; i++){ %>
+        <% if(isManager){ %>
+          <form action="/managerDisplayComment" method="post">
+        <% }else{ %>
+          <form action="/displayComment" method="post">
+        <% } %>
+          <input type="text" name="cmid" value="<%= comments[i].cmid %>" style="display: none;">
+          <input type="text" name="title" value="<%= comments[i].title %>" style="display: none;">
+          <input type="text" name="time" value="<%= comments[i].time %>" style="display: none;">
+          <input type="text" name="bookname" value="<%= comments[i].bookname %>" style="display: none;">
+          <input type="text" name="content" value="<%= comments[i].content %>" style="display: none;">
+          <div class="singleComment">
+            <ul class="baseInfo">
+              <li>
+                <button type="submit"><%= comments[i].title %></button>
+              </li>
+              <li>
+                <%= comments[i].time %>
+              </li>
+              <li>
+                《<%= comments[i].bookname %>》
+              </li>
+            </ul>
+            <p class="content">
+              <%= comments[i].content %>
+            </p>
+          </div>
+        </form>
+      <% } %>
     </div>
-    <div class="aside">
-      <div class="about">
-        <div class="title">个人档案</div>
-        <ul>
-          <li>
-            <span class="title">用户ID：</span>
-            <span class="substance">2355465</span>
-          </li>
-          <li>
-            <span class="title">用户名：</span>
-            <span class="substance">陌遥昔</span>
-          </li>
-          <li>
-            <span class="title">手机号：</span>
-            <span class="substance">15869875210</span>
-          </li>
-          <li>
-            <span class="title">性别：</span>
-            <span class="substance">男</span>
-          </li>
-          <li>
-            <span class="title">生日：</span>
-            <span class="substance">8.15</span>
-          </li>
-        </ul>
+    <% if(!isManager){ %>
+      <div class="aside">
+        <div class="about">
+          <div class="title">个人档案</div>
+          <ul>
+            <li>
+              <span class="title">用户名：</span>
+              <span class="substance"><%= user[0].username %></span>
+            </li>
+            <li>
+              <span class="title">手机号：</span>
+              <span class="substance"><%= user[0].phone %></span>
+            </li>
+            <li>
+              <span class="title">是否是会员：</span>
+              <span class="substance">
+                <% if(user[0].membership == 1){ %>
+                  <%= '会员' %>
+                <% }else{ %>
+                  <%= '非会员' %>
+                <% } %>
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="other">
-        <div class="title">我的热门书评</div>
-        <ul>
-          <li>
-            百年孤独读后感
-          </li>
-          <li>
-            禅与摩托车维修艺术读后感
-          </li>
-          <li>
-            明朝那些事儿读后感
-          </li>
-          <li>
-            山中来信读后感
-          </li>
-          <li>
-            百年孤独读后感
-          </li>
-        </ul>
-      </div>
-    </div>
+    <% } %>
   </main>
   <footer></footer>
 </body>

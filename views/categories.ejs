@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>人文社科</title>
+  <title></title>
 
   <!-- 图书类别进去之后的页面 -->
-
- 
 
  <!-- icon需要用的css -->
  <style type="text/css">
@@ -73,6 +71,12 @@
                 <span class="title">所属分类：</span>
                 <span class="substance"><%= book[i].categoryname %></span>
               </div>
+              <% if(like){ %>
+                <div class="likeTime">
+                  <span class="title">收藏时间：</span>
+                  <span class="substance"><%= book[i].time %></span>
+                </div>
+              <% } %>
             </div>
           </div>
           <div class="bookIntro">
@@ -89,11 +93,23 @@
                 </form>
               </li>
               <li>
-                <form action="/readerBuy" method="post">
+                <form action="/readyBuy" method="post">
                   <input type="text" name="isbn" value="<%= book[i].isbn %>" style="display: none;">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-buycar"></use>
-                  </svg>
+                  <button type="submit" style="border: none; background-color: inherit;">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-buycar"></use>
+                    </svg>
+                  </button>
+                </form>
+              </li>
+              <li>
+                <form action="/commentDetail.html" method="POST">
+                  <input type="text" name="isbn" value="<%= book[i].isbn %>" style="display: none;">
+                  <button type="submit" style="border: none; background-color: inherit;">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-comment"></use>
+                    </svg>
+                  </button>
                 </form>
               </li>
             </ul>
@@ -110,7 +126,7 @@
     $('footer').load('footer.html')
   </script>
   <!-- icon使用的js -->
-  <script src="//at.alicdn.com/t/font_663490_nuauggls0zmvaemi.js"></script>
+  <script src="//at.alicdn.com/t/font_663490_sb9xerr6jpd.js"></script>
   
   <script src="./js/main.js"></script>
 </html>

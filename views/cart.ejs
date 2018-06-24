@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>陌遥昔的购物车</title>
+  <title></title>
 
   <!-- icon使用的css -->
   <style type="text/css">
@@ -15,57 +15,120 @@
        overflow: hidden;
     }
   </style>
-
+ <link rel="stylesheet" href="./css/bootstrap.min.css">
   <!-- 自己写的css -->
  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   <header></header>
   <main class="cart">
-    <div class="books">
-      <div class="book">
-        <input type="checkbox" name="" id="">
-        <ul>
-          <li>
+    <% if(isManager){  %>
+      <div class="books">
+        <% for(let i=0; i<orders.length; i++){ %>
+        <% if(orders[i].finished == 0){ %>
+          <form method="post" name="ordersOp">
+        <% }else{ %>
+          <form method="post" name="ordersOp" style="display: none;">
+        <% } %>
+        
+            <input type="text" name="rid" value="<%= orders[i].rid %>" style="display: none;">
+            <input type="text" name="ordersid" value="<%= orders[i].ordersid %>" style="display: none;">
+            <div class="book" style="margin-bottom: 20px;">
+              <ul>
+                <li>
+                  <ul>
+                    <li>
+                      <span class="title">订单产生时间:</span>
+                      <span class="substance"><%= orders[i].time %></span>
+                    </li>
+                    <li>
+                      <span class="title">提交者:</span>
+                      <span class="substance"><%= orders[i].username %></span>  
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="title">备注：</span>
+                  <span class="substance">
+                    <% if(orders[i].membership == 0){ %>
+                      <%= '非会员' %>
+                    <% }else{ %>
+                      <%= '会员' %>
+                    <% } %>
+                  </span>
+                </li>
+                <li>
+                  <span class="title">总金额:</span>
+                  <span class="substance" style="color: red; font-weight: bold;">￥<%= orders[i].money %></span>
+                </li>
+                <li> <button class="btn btn-info" type="button" onclick="setMembership('<%= i %>')">设置成会员</button> </li>
+                <li> <button class="btn btn-info" type="button" onclick="finishOrder('<%= i %>')">完成订单</button> </li>
+              </ul>
+            </div>
+          </form>
+        <% } %>
+      </div>
+    <% }else{ %>
+      <div class="books">
+        <% for(let i=0; i<book.length; i++){ %>
+        <form action="/cancelBuyBook" method="post">
+          <div class="book" style="margin-bottom: 20px;">
             <ul>
               <li>
-                <span class="title">书名:</span>
-                <span class="substance">《许三观卖血记》</span>
+                <ul>
+                  <li>
+                    <span class="title">书名:</span>
+                    <span class="substance">《<%= book[i].name %>》</span>
+                  </li>
+                  <li>
+                    <span class="title">ISBN:</span>
+                    <span class="substance"><%= book[i].isbn %></span>
+                    <input type="text" name="isbn" value="<%= book[i].isbn %>" style="display: none;">
+                  </li>
+                </ul>
               </li>
               <li>
-                <span class="title">ISBN:</span>
-                <span class="substance">5865478652</span>
+                <span class="title">原价:</span>
+                <span class="substance">￥<%= book[i].price %></span>
               </li>
+              <li>
+                <span class="title">折扣价:</span>
+                <span class="substance" style="color: red; font-weight: bold;">￥<%= book[i].reallyPrice %></span>
+              </li>
+              <li> <button class="btn btn-default" type="submit">删除</button> </li>
             </ul>
-          </li>
-          <li>
-            <span class="title">单价:</span>
-            <span class="substance">￥25.00</span>
-          </li>
-          <li>
-            <span class="title">数量:</span>
-            <span class="substance">2</span>
-          </li>
-          <li>
-            <span class="tltle">金额:</span>
-            <span class="substance">￥50.00</span>
-          </li>
-          <li>删除</li>
-        </ul>
+          </div>
+        </form>
+        <% } %>
       </div>
-    </div>
-    <div class="calcuBar clearfix">
-      <label class="seleceAll">
-        <input type="checkbox">
-        全选
-      </label>
-      <div class="delete">删除</div>
-      <div class="allMoney">
-        <span>合计:</span>
-        <span class="money">￥150.50</span>
-      </div>
-      <div class="settlements">提交订单</div>
-    </div>
+      <% if(book.length>0){ %>
+        <div class="calcuBar clearfix">
+          <div class="delete">
+            <form action="/cancelAllBuyBook" method="post">
+              <button class="btn btn-danger" type="submit">全部删除</button>
+            </form>
+          </div>
+          <form action="/submitOrder" method="post">
+            <div class="allMoney">
+              <span>合计:</span>
+              <span class="money" style="color: red; font-weight: bold;">
+                <% var allPrice = 0, isbns=[]%>
+                <% for(let i=0; i<book.length; i++){  %>
+                <%   allPrice = book[i].reallyPrice + allPrice %>
+                <%   isbns.push(book[i].isbn)  %>
+                <% } %>
+                  ￥<%= allPrice %>
+                <input type="text" name="isbns" value="<%= JSON.stringify(isbns) %>" style="display: none;">
+                <input type="text" name="money" value="<%= allPrice %>" style="display: none;">
+              </span>
+            </div>
+            <button type="submit" class="settlements">提交订单</div>
+          </form>
+        </div>
+      <% }else{ %>
+        <p style="text-align: center;">购物车空空如也</p>
+      <% } %>
+    <% } %>
   </main>
   <footer></footer>
 </body>
@@ -79,4 +142,14 @@
 
 
   <script src="./js/main.js"></script>
+  <script>
+    function setMembership(index){
+      document.ordersOp[index].action="/setMembership";//提交的url
+      document.ordersOp[index].submit();
+    }
+    function finishOrder(index){
+      document.ordersOp[index].action="/finishOrder";//提交的url
+      document.ordersOp[index].submit();
+    }
+  </script>
 </html>

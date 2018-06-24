@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>评论区</title>
+
+  
+ <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <!-- 自己写的css -->
+ <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header></header>
+  <main class="comment">
+    <% if(commentState === 'createComment'){ %>
+      <form action="/createComment" method="post">
+        <h2>
+          <%= book[0].name %>
+          <input type="text" name="isbn" value="<%= book[0].isbn %>" style="display: none;">
+        </h2>
+        <input name="title" type="text" class="form-control" placeholder="请在此处输入标题">
+        <textarea name="content" class="form-control" rows="20"></textarea>
+        <button type="submit" class="btn btn-info submit">提交评论</button>
+      </form>
+    <% }else if(commentState === 'displayComment'){ %>
+      <form method="post" name="commentOp" class="commentOp">
+        <input type="text" name="cmid" value="<%= commentId %>" style="display: none;">
+        <div class="commentInfo">
+          <ul class="baseInfo">
+            <li>
+              <span><%= commentTitle %></span>
+              <input type="text" name="title" value="<%= commentTitle %>">
+            </li>
+            <li>
+              <%= commentTime %>
+            </li>
+            <li>
+              《<%= commentBook %>》
+            </li>
+            <li>
+              <button type="button" class="btn btn-warning change" onclick="changeComment()">修改</button>
+              <button type="button" class="btn btn-warning submitChange" onclick="submitChangeComment()">提交</button>
+              <button type="button" class="btn btn-danger delete" onclick="deleteComment()">删除</button>
+            </li>
+          </ul>
+          <p class="content">
+            <%= commentContent %>
+          </p>
+          <textarea name="content" class="form-control" rows="20"><%= commentContent %></textarea>
+        </div>
+      </form>
+    <% }else if(commentState === 'managerDisplayComment'){ %>
+      <form action="/deleteComment" method="post">
+        <input type="text" name="cmid" value="<%= commentId %>" style="display: none;">
+        <div class="commentInfo">
+          <ul class="baseInfo">
+            <li>
+              <span><%= commentTitle %></span>
+            </li>
+            <li>
+              <%= commentTime %>
+            </li>
+            <li>
+              《<%= commentBook %>》
+            </li>
+            <li>
+              <button type="submit" class="btn btn-danger delete">删除</button>
+            </li>
+          </ul>
+          <p class="content">
+            <%= commentContent %>
+          </p>
+        </div>
+      </form>
+    <% } %>
+  </main>
+  <footer></footer>
+</body>
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script>
+    $('header').load('header.html')
+    $('footer').load('footer.html')
+  </script>
+  <script src="./js/main.js"></script>
+  <script>
+    let span = $('form.commentOp ul>li>span')
+    let input = $('form.commentOp ul>li>input')
+    let p = $('form.commentOp p')
+    let textarea = $('form.commentOp textarea')
+    input.css('display','none')
+    textarea.css('display','none')
+    $('form.commentOp ul>li>button.submitChange').css('display','none')
+    function changeComment(){
+      input.css('display','inline-block')
+      span.css('display','none')
+      textarea.css('display','inline-block')
+      p.css('display','none')
+      $('form.commentOp ul>li>button.submitChange').css('display','inline-block')
+      $('form.commentOp ul>li>button.change').css('display','none')
+    }
+    function submitChangeComment(){
+      $('form.commentOp ul>li>button.change').css('display','inline-block')
+      $('form.commentOp ul>li>button.submitChange').css('display','none')
+      document.commentOp.action="/changeComment";//提交的url
+      document.commentOp.submit();
+    }
+    function deleteComment(){
+      document.commentOp.action="/deleteComment";//提交的url
+      document.commentOp.submit();
+    }
+  </script>
+</html>

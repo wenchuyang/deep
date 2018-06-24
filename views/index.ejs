@@ -85,7 +85,7 @@
   </div>
   <header></header>
   <main>
-    <section class="topSlot">
+    <!-- <section class="topSlot">
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -152,11 +152,99 @@
             </div>
           </div>
         </div>
-        <!-- 如果需要分页器 -->
+        <!-- 如果需要分页器 
         <div class="swiper-pagination"></div>
       </div>
+    </section> -->
+    <section class="indexBookDisplay" style="position: relative;z-index:1;margin-top: 90px;">
+      <% for(let i=0; i<book.length; i++){ %>
+        <div class="bookDetails" style="background-color: rgb(202,211,192);">
+          <div class="wrapper">
+            <div class="bookInfo">
+              <div class="bookImage">
+                <img src="<%= book[i].image %>" alt="" width=120>
+              </div>
+              <div class="baseInfo">
+                <div class="bookName">
+                  <span class="title">书名：</span>
+                  <span class="substance">《<%= book[i].bookname %>》</span>
+                </div>
+                <div class="author">
+                  <span class="title">作者：</span>
+                  <span class="substance"><%= book[i].author %></span>
+                </div>
+                <div class="publisher">
+                  <span class="title">出版社：</span>
+                  <span class="substance"><%= book[i].publisher %></span>
+                </div>
+                <div class="printed">
+                  <span class="title">装帧：</span>
+                  <span class="substance"><%= book[i].printed %></span>
+                </div>
+                <div class="ISBN">
+                  <span class="title">ISBN：</span>
+                  <span class="substance"><%= book[i].isbn %></span>
+                </div>
+              </div>
+              <div class="otherInfo">
+                <div class="originPrice">
+                  <span class="title">定价：</span>
+                  <span class="substance">￥<%= book[i].price %></span>
+                </div>
+                <div class="nowPrice">
+                  <span class="title">售价：</span>
+                  <span class="substance">￥<%= book[i].reallyPrice %></span>
+                </div>
+                <div class="stock">
+                  <span class="title">库存：</span>
+                  <span class="substance"><%= book[i].stock %></span>
+                </div>
+                <div class="bookCategory">
+                  <span class="title">所属分类：</span>
+                  <span class="substance"><%= book[i].categoryname %></span>
+                </div>
+              </div>
+            </div>
+            <div class="bookIntro">
+              <p><%= book[i].intro %></p>
+              <ul>
+                <li>
+                  <form action="/readerCollect" method="post">
+                    <input type="text" name="isbn" value="<%= book[i].isbn %>" style="display: none;">
+                    <button type="submit" style="border: none; background-color: inherit;">
+                      <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-like"></use>
+                      </svg>
+                    </button>
+                  </form>
+                </li>
+                <li>
+                  <form action="/readyBuy" method="post">
+                    <input type="text" name="isbn" value="<%= book[i].isbn %>" style="display: none;">
+                    <button type="submit" style="border: none; background-color: inherit;">
+                      <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-buycar"></use>
+                      </svg>
+                    </button>
+                  </form>
+                </li>
+                <li>
+                  <form action="/commentDetail.html" method="POST">
+                    <input type="text" name="isbn" value="<%= book[i].isbn %>" style="display: none;">
+                    <button type="submit" style="border: none; background-color: inherit;">
+                      <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-comment"></use>
+                      </svg>
+                    </button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% } %>
     </section>
-    <section class="onSale">
+    <!-- <section class="onSale">
       <div class="mask">
         <div class="bg"></div>
       </div>
@@ -216,7 +304,7 @@
           <a href="#">了解更多</a>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
   <footer></footer>
 </body>
@@ -229,32 +317,32 @@
     window.onload = () => welcomeLoading.classList.remove('active')
   </script>
   <!-- 轮播图需要用的JS代码 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/js/swiper.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/js/swiper.js"></script> -->
   
   <script>
-    var mySwiper = new Swiper ('.swiper-container', {
-      direction: 'horizontal',
-      loop: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      // 如果需要分页器
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    })
-    mySwiper.el.onmouseover = function(){
-      mySwiper.autoplay.stop();
-    }
+    // var mySwiper = new Swiper ('.swiper-container', {
+    //   direction: 'horizontal',
+    //   loop: true,
+    //   autoplay: {
+    //     delay: 2500,
+    //     disableOnInteraction: false,
+    //   },
+    //   // 如果需要分页器
+    //   pagination: {
+    //     el: '.swiper-pagination',
+    //     clickable: true,
+    //   },
+    // })
+    // mySwiper.el.onmouseover = function(){
+    //   mySwiper.autoplay.stop();
+    // }
     // mySwiper.el.onmouseout = function(){
     //   mySwiper.autoplay.start()
     // }
   </script>
 
   <!-- 项目图标需要用的js代码 -->
-  <script src="//at.alicdn.com/t/font_663490_nuauggls0zmvaemi.js"></script>  
+  <script src="//at.alicdn.com/t/font_663490_sb9xerr6jpd.js"></script>  
   
   <script src="./js/main.js"></script>
 
